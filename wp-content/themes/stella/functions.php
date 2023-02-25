@@ -138,8 +138,75 @@ add_action( 'widgets_init', 'stella_widgets_init' );
  * Enqueue scripts and styles.
  */
 function stella_scripts() {
+
+	$themeDir = get_template_directory_uri();
+	$temDir = get_template_directory();
+
+	//theme style
 	wp_enqueue_style( 'stella-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'stella-style', 'rtl', 'replace' );
+
+	//bootstrap
+	wp_register_style( 'stella-bootstrap', $themeDir. '/css/bootstrap.css', [], false, 'all' );
+	wp_enqueue_style( 'stella-bootstrap' );
+
+	//custom style
+	wp_register_style( 'stella-custom-style', $themeDir. '/css/style.css', [], filemtime( $temDir. '/css/style.css'), 'all' );
+	wp_enqueue_style( 'stella-custom-style' );
+
+	//Responsive
+	wp_register_style( 'stella-responsive', $themeDir. '/css/responsive.css', [], filemtime( $temDir. '/css/responsive.css'), 'all' );
+	wp_enqueue_style( 'stella-responsive' );
+
+	//Resister propper
+	wp_register_script( 'stella-propper', $themeDir. '/js/popper.min.js', ['jquery'], false, true );
+	//Enqueue propper
+	wp_enqueue_script( 'stella-propper' );
+
+	// Register jQuery UI
+	wp_register_script( 'stella-jui', $themeDir. '/js/jquery-ui.js', ['jquery'], false, true );
+	// Enqueue jQuery UI
+	wp_enqueue_script( 'stella-jui' );
+
+	// Register Bootstrap
+	wp_register_script( 'stella-bootjs', $themeDir. '/js/bootstrap.min.js', [], false, true );
+	// Enqueue Bootstrap
+	wp_enqueue_script( 'stella-bootjs' );
+
+	// Register Fancybox
+	wp_register_script( 'stella-fancybox', $themeDir. '/js/jquery.fancybox.js', [], false, true );
+	// Enqueue Fancybox
+	wp_enqueue_script( 'stella-fancybox' );
+
+	// Register isotope
+	wp_register_script( 'stella-isotope', $themeDir. '/js/isotope.js', [], false, true );
+	// Enqueue isotope
+	wp_enqueue_script( 'stella-isotope' );
+
+	// Register OWL
+	wp_register_script( 'stella-owl', $themeDir. '/js/owl.js', [], false, true );
+	// Enqueue OWL
+	wp_enqueue_script( 'stella-owl' );
+
+	// Register wow
+	wp_register_script( 'stella-wow', $themeDir. '/js/wow.js', [], false, true );
+	// Enqueue wow
+	wp_enqueue_script( 'stella-wow' );
+
+	// Register Appear
+	wp_register_script( 'stella-appear', $themeDir. '/js/appear.js', [], false, true );
+	// Enqueue Appear
+	wp_enqueue_script( 'stella-appear' );
+
+	// Register Scrollbar
+	wp_register_script( 'stella-scrollbar', $themeDir. '/js/scrollbar.js', [], false, true );
+	// Enqueue Scrollbar
+	wp_enqueue_script( 'stella-scrollbar' );
+
+	// Register script
+	wp_register_script( 'stella-script', $themeDir. '/js/script.js', [], filemtime($temDir. '/js/script.js'), true );
+	// Enqueue script
+	wp_enqueue_script( 'stella-script' );
 
 	wp_enqueue_script( 'stella-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
